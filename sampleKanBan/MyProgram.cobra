@@ -1,0 +1,8 @@
+"""
+Replace this text with a description of your program.
+"""
+
+class MyProgram
+
+	def main
+		print 'Hello, world!'

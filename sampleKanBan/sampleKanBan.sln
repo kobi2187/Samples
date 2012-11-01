@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{0A906CA0-EF87-4D08-9CA7-C8380245B3FF}") = "sampleKanBan", "sampleKanBan.cobraproj", "{3085AB5A-FCFC-4C70-BE62-5D5894B1FC4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3085AB5A-FCFC-4C70-BE62-5D5894B1FC4F}.Debug|x86.ActiveCfg = Debug|x86
+		{3085AB5A-FCFC-4C70-BE62-5D5894B1FC4F}.Debug|x86.Build.0 = Debug|x86
+		{3085AB5A-FCFC-4C70-BE62-5D5894B1FC4F}.Release|x86.ActiveCfg = Release|x86
+		{3085AB5A-FCFC-4C70-BE62-5D5894B1FC4F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = sampleKanBan.cobraproj
+	EndGlobalSection
+EndGlobal
