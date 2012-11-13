@@ -1,8 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyProgram.cobra">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GreetController\GreetMsg.cobra">
     <Files>
-      <File FileName="MyProgram.cobra" Line="9" Column="1" />
+      <File FileName="MyProgram.cobra" Line="14" Column="1" />
+      <File FileName="ConsoleView.cobra" Line="34" Column="33" />
+      <File FileName="GreetController\GreetController.cobra" Line="36" Column="26" />
+      <File FileName="GreetController\GreetMsg.cobra" Line="11" Column="1" />
+      <File FileName="GreetController\CommonDefinitions.cobra" Line="3" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

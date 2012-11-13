@@ -1,8 +1,15 @@
 """
-Replace this text with a description of your program.
+this program will greet you.
 """
+
+use GreetHello
+use VariantMvc
+# use GenericProject
 
 class MyProgram
 
 	def main
-		print 'Hello, world!'
+		view = ConsoleView()
+		ctrl = GreetController(view)
+		ctrl.performAction("greet")
+		ctrl.performAction("exit")

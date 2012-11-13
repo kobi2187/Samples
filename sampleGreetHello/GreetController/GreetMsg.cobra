@@ -1,0 +1,10 @@
+use VariantMvc
+use CommonData
+
+struct GreetMsg
+	pro attitude from var as uint
+	pro text from var as String
+	
+	cue init(attitude as uint, text as String)
+		_attitude, _text = attitude, text
+		

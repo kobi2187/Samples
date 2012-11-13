@@ -1,0 +1,38 @@
+use VariantMvc
+use CommonData
+
+namespace GreetHello
+
+
+
+class ConsoleView implements IView
+
+	def setup
+		pass
+		
+	def requestUpdate
+		pass
+	
+	def redrawAll(dict as Dictionary<of String, SimpleData>)
+		for k in dict.keys
+			val = dict[k]
+			branch k
+				on Parts.Counter.toString
+					draw_count(val)
+				on Parts.Attitude.toString
+					draw_attiture_bar(val)
+				on Parts.ShowMsg.toString
+					draw_msg(val)
+				else
+					assert false
+					
+					
+	def draw_attitude_bar(msg as SimpleData)
+		pass
+	def draw_count(msg as SimpleData)
+		pass
+	def draw_msg(msg as SimpleData)
+		text = msg.data as String
+		print text
+	
+	

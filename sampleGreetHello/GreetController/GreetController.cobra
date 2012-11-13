@@ -1,0 +1,44 @@
+use GenericProject
+use VariantMvc
+
+namespace GreetHello
+
+class GreetController inherits Controller #implements IControllerSpec
+
+	cue init(v1 as IView)
+		base.init(v1)
+	
+	def customAction(cmd as String) is override
+		.decideAction(cmd)
+		
+	var _pastGreetings = SortedDictionary<DateTime,GreetMsg>()
+	var _currentAttitude = Attitude.None
+	var _availableGreetings = List<GreetMsg>()
+	
+	var _isLoaded as bool
+	def loadGreetings
+		pass # loads from ini file.
+	
+	def adjustAttitude(uint n)
+		require
+			1 <= n <= Attitude.length
+		_currentAttitude = n as Attitude
+	
+	
+	
+	# features:
+	def decideAction(cmd as String)
+		parsed = Utils.parseCommand(cmd)
+		branch parsed.command
+			on "exit"
+				.notifyViews("do_exit")
+			on "greet"
+				msg = .chooseGreeting
+				.doGreet(msg) # sends simpledata
+				.storeMsg(msg)
+			on "add"
+				# add attitude -attitude:"attitude"
+				# add msg -attitude:"attitude" -msg:"msg"
+	
+	
+		

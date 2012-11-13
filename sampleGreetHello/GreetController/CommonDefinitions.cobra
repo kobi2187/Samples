@@ -1,0 +1,5 @@
+
+# hmm, this is so simple, I'm not sure what the parts are.
+enum Parts
+	Attitude, Counter, ShowMsg
+	

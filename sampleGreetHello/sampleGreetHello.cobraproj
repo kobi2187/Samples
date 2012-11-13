@@ -26,5 +26,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MyProgram.cobra" />
+    <Compile Include="ConsoleView.cobra" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="GreetController\GreetHello.cobraproj">
+      <Project>{5D555615-8204-4EEF-BC5A-0EC8CE348F59}</Project>
+      <Name>GreetHello</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="variant_mvc">
+      <HintPath>..\..\variant_mvc\bin\Debug\variant_mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="generic_project">
+      <HintPath>..\..\generic_project\bin\Debug\generic_project.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="greeter.png" />
   </ItemGroup>
 </Project>
