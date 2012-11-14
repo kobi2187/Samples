@@ -47,6 +47,7 @@
             this.btnGreet.TabIndex = 0;
             this.btnGreet.Text = "Click to be greeted!";
             this.btnGreet.UseVisualStyleBackColor = true;
+            this.btnGreet.Click += new System.EventHandler(this.btnGreet_Click);
             // 
             // label1
             // 
@@ -65,6 +66,9 @@
             this.tbAttitudeAdjuster.Size = new System.Drawing.Size(346, 56);
             this.tbAttitudeAdjuster.TabIndex = 2;
             this.tbAttitudeAdjuster.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.tbAttitudeAdjuster.Value = 3;
+            this.tbAttitudeAdjuster.ValueChanged += new System.EventHandler(this.tbAttitudeAdjuster_ValueChanged);
+            
             // 
             // label2
             // 
