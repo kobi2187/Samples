@@ -1,13 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GreetController\GreetMsg.cobra">
+  <MonoDevelop.Ide.Workbench ActiveDocument="winforms\sampleGreetHello\WinformsGreetView.cs">
     <Files>
       <File FileName="MyProgram.cobra" Line="14" Column="1" />
-      <File FileName="ConsoleView.cobra" Line="34" Column="33" />
-      <File FileName="GreetController\GreetController.cobra" Line="36" Column="26" />
+      <File FileName="ConsoleView.cobra" Line="18" Column="6" />
+      <File FileName="GreetController\GreetController.cobra" Line="147" Column="4" />
       <File FileName="GreetController\GreetMsg.cobra" Line="11" Column="1" />
-      <File FileName="GreetController\CommonDefinitions.cobra" Line="3" Column="5" />
+      <File FileName="GreetController\CommonDefinitions.cobra" Line="5" Column="28" />
+      <File FileName="winforms\sampleGreetHello\WinformsGreetView.cs" Line="46" Column="27" />
+      <File FileName="winforms\sampleGreetHello\WinformsGreetView_2.cs" Line="20" Column="1" />
+      <File FileName="GreetController\IGreetView.cobra" Line="1" Column="1" />
+      <File FileName="winforms\sampleGreetHello\Program.cs" Line="19" Column="50" />
+      <File FileName="winforms\sampleGreetHello\Form1.Designer.cs" Line="5" Column="7" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="GreetHello" expanded="True" />
+          <Node name="sampleGreetHello" expanded="True">
+            <Node name="WinformsGreetView.cs" selected="True" />
+          </Node>
+          <Node name="sampleGreetHello" expanded="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

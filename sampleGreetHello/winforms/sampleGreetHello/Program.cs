@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using GreetHello;
 
-namespace sampleGreetHello
+namespace SampleGreetHello
 {
     static class Program
     {
@@ -15,7 +16,7 @@ namespace sampleGreetHello
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new sampleGreetHello());
+            Application.Run(new WinformsGreetView());
         }
     }
 }

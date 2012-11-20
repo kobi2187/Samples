@@ -3,9 +3,7 @@ use CommonData
 
 namespace GreetHello
 
-
-
-class ConsoleView implements IView
+class ConsoleView implements IView, IGreetView
 
 	def setup
 		pass

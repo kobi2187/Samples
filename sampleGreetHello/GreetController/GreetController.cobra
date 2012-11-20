@@ -1,44 +1,148 @@
+
+extend IEnumerable<of T>
+	def filter(pred as Func<of T,bool>) as List<of T>
+		list = List<of T>()
+		for item in this # run thru all of them
+			if pred(item)
+				list.add(item) # add true preds
+				# note: a more advanced one would use 'yield' instead. let's keep it simple for now.
+		return list
+	
+	def map(convert as Func<of T,T>) as List<of T>
+		list = List<of T>()
+		for item in this # run thru all of them
+			x = convert(item)
+			list.add(x)
+		return list
+
+extend IList<of T>
+	def random as T
+		rand = Random()
+		choose = rand.next(.count)
+		assert 0 <= choose and choose < .count
+		return this[choose]
+
+
 use GenericProject
 use VariantMvc
+use CommonData
+use Nini
 
 namespace GreetHello
 
-class GreetController inherits Controller #implements IControllerSpec
 
-	cue init(v1 as IView)
-		base.init(v1)
+
+
+class GreetController inherits Controller<of Parts>
+
+	cue init(v1 as IView<of Parts>)
+		require
+			v1 implements IGreetView
+		body
+			base.init(v1)
 	
-	def customAction(cmd as String) is override
-		.decideAction(cmd)
+	def customBefore(cmd as ParsedCommand) is override
+		pass
 		
-	var _pastGreetings = SortedDictionary<DateTime,GreetMsg>()
-	var _currentAttitude = Attitude.None
-	var _availableGreetings = List<GreetMsg>()
+	def customAfter(cmd as ParsedCommand) is override
+		pass
+		
+	def customAction(cmd as ParsedCommand) as Response is override
+		return .decideAction(cmd)
+		
+	var _pastGreetings = SortedDictionary<of DateTime,GreetMsg>()
+	
+	invariant
+		.validAttitude(_currentAttitude)
+		
+		
+		
+		
+		
+		
+	var _currentAttitude as uint
+	get currAttitudeStr as String
+		return _attitudesArray[_currentAttitude to int]
+		
+	def validAttitude(att as uint) as bool is private
+		return 0 < att and att < _attitudesArray.length
+		
+	var _availableGreetings = List<of GreetMsg>()
+	var _greetsHash = Dictionary<of String, List<of GreetMsg>>() # attitude,msgs
+	var _attitudesArray as String[]
 	
 	var _isLoaded as bool
-	def loadGreetings
+	def load is override
 		pass # loads from ini file.
 	
-	def adjustAttitude(uint n)
+	def adjustAttitude(n as uint) is protected
 		require
-			1 <= n <= Attitude.length
-		_currentAttitude = n as Attitude
+			0 <= n < _attitudesArray.length
+		body
+			_currentAttitude = n
 	
+
 	
+
+	def chooseGreeting as GreetMsg is protected
+		greeting = _greetsHash[.currAttitudeStr].random
+		return greeting
 	
+	def doGreet(msg as GreetMsg) is protected
+		require
+			msg.attitude == _currentAttitude
+		body
+			for v in .views
+				gv = v to IGreetView
+				gv.showMsg(msg.text)
+		
+	def storeMsg(msg as GreetMsg) is protected
+		_pastGreetings.add(DateTime.now, msg)
+			
 	# features:
-	def decideAction(cmd as String)
-		parsed = Utils.parseCommand(cmd)
-		branch parsed.command
+	def getDataForPart(part as Parts) as SimpleData<of Parts> is override
+		simp as SimpleData<of Parts>
+		branch part
+			on Parts.Attitude
+				simp = SimpleData<of Parts>(part, .currAttitudeStr)
+			on Parts.Counter
+				simp = SimpleData<of Parts>(part, _pastGreetings.count)
+			#on Parts.ShowMsg
+			#	simp = SimpleData<of Parts>(part, .chooseGreeting.text)
+			else
+				throw NotImplementedException()
+			
+		return simp
+				
+	def decideAction(parsed as ParsedCommand) as Response is protected
+		res as Response
+		branch parsed.command #note: can branch further on the subkeys.
 			on "exit"
 				.notifyViews("do_exit")
+				res = Response.okay
 			on "greet"
 				msg = .chooseGreeting
 				.doGreet(msg) # sends simpledata
 				.storeMsg(msg)
-			on "add"
-				# add attitude -attitude:"attitude"
-				# add msg -attitude:"attitude" -msg:"msg"
-	
-	
-		
+				res = Response.okay
+			on "adjust"
+				if not parsed.arguments.containsKey("attitude")
+					return Response(ErrorType.UnknownConfigKeys, 'expected key "attitude"')
+				else
+					att = parsed.arguments["attitude"]
+					num as uint
+					parseok = uint.tryParse(att, out num)
+					if not parseok
+						return Response(ErrorType.BadValue, 
+						'bad value, expected uint, got "[att]"')
+					else
+						if not .validAttitude(num)
+							return Response(ErrorType.ValueNotInRange, 'expected a value between 0 .. [_attitudesArray.length-1], but got [num]')
+						else
+							.adjustAttitude(num)
+			
+				# unknown command
+				explanation = 'got a wrong or unimplemented command: "[parsed.command]".'
+				res = Response(ErrorType.UnknownCommand, explanation)
+			
+		return res

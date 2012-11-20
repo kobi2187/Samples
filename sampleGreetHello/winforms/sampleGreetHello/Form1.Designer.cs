@@ -1,7 +1,9 @@
-﻿namespace sampleGreetHello
+﻿namespace SampleGreetHello
 {
-    partial class sampleGreetHello
+    partial class WinformsGreetView 
     {
+      
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -126,12 +128,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnGreet;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TrackBar tbAttitudeAdjuster;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.StatusStrip statusGreetCounter;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        internal System.Windows.Forms.Button btnGreet;
+        internal System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.TrackBar tbAttitudeAdjuster;
+        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.StatusStrip statusGreetCounter;
+        internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

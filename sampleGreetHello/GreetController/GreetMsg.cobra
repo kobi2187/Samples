@@ -1,6 +1,7 @@
 use VariantMvc
 use CommonData
 
+namespace GreetHello
 struct GreetMsg
 	pro attitude from var as uint
 	pro text from var as String

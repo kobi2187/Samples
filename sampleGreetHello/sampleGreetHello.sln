@@ -5,6 +5,8 @@ Project("{0A906CA0-EF87-4D08-9CA7-C8380245B3FF}") = "sampleGreetHello", "sampleG
 EndProject
 Project("{0A906CA0-EF87-4D08-9CA7-C8380245B3FF}") = "GreetHello", "GreetController\GreetHello.cobraproj", "{5D555615-8204-4EEF-BC5A-0EC8CE348F59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sampleGreetHello", "winforms\sampleGreetHello\sampleGreetHello.csproj", "{CB30BB4F-CFE8-4CEA-849B-34A91A1D9E44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{C54EA58B-0217-425E-839C-087958AB9CE3}.Debug|x86.Build.0 = Debug|x86
 		{C54EA58B-0217-425E-839C-087958AB9CE3}.Release|x86.ActiveCfg = Release|x86
 		{C54EA58B-0217-425E-839C-087958AB9CE3}.Release|x86.Build.0 = Release|x86
+		{CB30BB4F-CFE8-4CEA-849B-34A91A1D9E44}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CB30BB4F-CFE8-4CEA-849B-34A91A1D9E44}.Debug|x86.Build.0 = Debug|Any CPU
+		{CB30BB4F-CFE8-4CEA-849B-34A91A1D9E44}.Release|x86.ActiveCfg = Release|Any CPU
+		{CB30BB4F-CFE8-4CEA-849B-34A91A1D9E44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = sampleGreetHello.cobraproj

@@ -42,7 +42,4 @@
       <HintPath>..\..\generic_project\bin\Debug\generic_project.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="greeter.png" />
-  </ItemGroup>
 </Project>

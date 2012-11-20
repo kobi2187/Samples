@@ -28,13 +28,18 @@
     <Compile Include="GreetController.cobra" />
     <Compile Include="GreetMsg.cobra" />
     <Compile Include="CommonDefinitions.cobra" />
+    <Compile Include="IGreetView.cobra" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="generic_project">
       <HintPath>..\..\..\generic_project\bin\Debug\generic_project.dll</HintPath>
     </Reference>
+    <Reference Include="System.Core" />
     <Reference Include="variant_mvc">
       <HintPath>..\..\..\variant_mvc\bin\Debug\variant_mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Nini">
+      <HintPath>..\..\..\ExternalLibs\Nini\Bin\DotNet\2.0\Debug\Nini.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
