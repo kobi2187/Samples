@@ -29,6 +29,7 @@
     <Compile Include="GreetMsg.cobra" />
     <Compile Include="CommonDefinitions.cobra" />
     <Compile Include="IGreetView.cobra" />
+    <Compile Include="IniHelper.cobra" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="generic_project">

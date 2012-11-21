@@ -33,7 +33,7 @@
             this.btnGreet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbAttitudeAdjuster = new System.Windows.Forms.TrackBar();
-            this.label2 = new System.Windows.Forms.Label();
+            this.attitudeLabel = new System.Windows.Forms.Label();
             this.statusGreetCounter = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.tbAttitudeAdjuster)).BeginInit();
@@ -74,12 +74,12 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(184, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "still unknown";
+            this.attitudeLabel.AutoSize = true;
+            this.attitudeLabel.Location = new System.Drawing.Point(184, 88);
+            this.attitudeLabel.Name = "label2";
+            this.attitudeLabel.Size = new System.Drawing.Size(88, 17);
+            this.attitudeLabel.TabIndex = 3;
+            this.attitudeLabel.Text = "still unknown";
             // 
             // statusGreetCounter
             // 
@@ -106,7 +106,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(346, 202);
             this.Controls.Add(this.statusGreetCounter);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.attitudeLabel);
             this.Controls.Add(this.tbAttitudeAdjuster);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGreet);
@@ -131,7 +131,7 @@
         internal System.Windows.Forms.Button btnGreet;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.TrackBar tbAttitudeAdjuster;
-        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Label attitudeLabel;
         internal System.Windows.Forms.StatusStrip statusGreetCounter;
         internal System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }

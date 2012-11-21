@@ -15,6 +15,10 @@ namespace SampleGreetHello
 {
     public partial class WinformsGreetView : Form, IView<Parts>, IGreetView
     {
+        public event UpdateNotification FinishedSendingUpdates;
+        public event UpdateNotification StartedSendingUpdates;
+
+
         IController<Parts> _ctrl;
         // this is the main.
         public WinformsGreetView()
@@ -36,32 +40,34 @@ namespace SampleGreetHello
             switch (data.Part)
             {
                 case Parts.Attitude:
-                    drawAttitude(data.Data);
+                    drawAttitude((string)data.Data);
                     break;
                 case Parts.Counter:
-                    drawCounter(data.Data);
+                    drawCounter((uint)data.Data);
                     break;
                 case Parts.ShowMsg:
-                    drawMsg(data.Data);
+                    drawMsg((string)data.Data);
                     break;
                 default:
                     throw new NotImplementedException();
             }
         }
 
-        void drawAttitude(object data)
+        void drawAttitude(string data)
         {
-            throw new NotImplementedException();
+            this.attitudeLabel.Text = data;
         }
 
-        void drawCounter(object data)
+        void drawCounter(uint data)
         {
-            throw new NotImplementedException();
+            string status = String.Format("greeted {0} times today.", data);
+            this.toolStripStatusLabel1.Text = status;
         }
 
-        void drawMsg(object data)
+        void drawMsg(string data)
         {
-            throw new NotImplementedException();
+            var str = data;
+            MessageBox.Show(str);            
         }
         
         public void SetupUi()
@@ -80,11 +86,6 @@ namespace SampleGreetHello
             throw new NotImplementedException();
         }
 
-        public void ShowMsg(string str)
-        {
-            MessageBox.Show(str);
-        }
-        
         public void DoExit()
         {
             Application.Exit();

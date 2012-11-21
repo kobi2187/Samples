@@ -1,0 +1,33 @@
+use Nini.Ini
+use Nini.Config
+
+class IniHelper
+
+	def getSectionNames(path as String) as List<of String> is private,shared
+		iniSrc = IniDocument(path)
+		sections = List<of String>()
+		# get section names
+		for item in iniSrc.sections
+			sections.add(item.name)
+			
+		return sections
+		
+	def getIniRepr(path as String) as Dictionary<of String, Dictionary<of String, String>>
+	
+		source = IniConfigSource(path)
+		dict = Dictionary<of String,Dictionary<of String,String>>()
+		
+		sections = .getSectionNames(path)
+		
+		for name in sections
+			sect = source.configs[name]
+			
+			innerDict = Dictionary<of String,String>()
+			for k in sect.getKeys
+				val = sect.getString(k)
+				innerDict.add(k,val)
+			
+			dict.add(name, innerDict)
+			
+		return dict
+		

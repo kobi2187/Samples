@@ -26,6 +26,7 @@ extend IList<of T>
 use GenericProject
 use VariantMvc
 use CommonData
+use System.Linq
 use Nini
 
 namespace GreetHello
@@ -50,7 +51,7 @@ class GreetController inherits Controller<of Parts>
 	def customAction(cmd as ParsedCommand) as Response is override
 		return .decideAction(cmd)
 		
-	var _pastGreetings = SortedDictionary<of DateTime,GreetMsg>()
+	var _pastGreetings = SortedList<of DateTime,GreetMsg>()
 	
 	invariant
 		.validAttitude(_currentAttitude)
@@ -82,19 +83,13 @@ class GreetController inherits Controller<of Parts>
 			_currentAttitude = n
 	
 
-	
+	get lastGreeting as GreetMsg
+		return _pastGreetings.values.last
 
 	def chooseGreeting as GreetMsg is protected
 		greeting = _greetsHash[.currAttitudeStr].random
 		return greeting
 	
-	def doGreet(msg as GreetMsg) is protected
-		require
-			msg.attitude == _currentAttitude
-		body
-			for v in .views
-				gv = v to IGreetView
-				gv.showMsg(msg.text)
 		
 	def storeMsg(msg as GreetMsg) is protected
 		_pastGreetings.add(DateTime.now, msg)
@@ -104,11 +99,11 @@ class GreetController inherits Controller<of Parts>
 		simp as SimpleData<of Parts>
 		branch part
 			on Parts.Attitude
-				simp = SimpleData<of Parts>(part, .currAttitudeStr)
+				simp = SimpleData<of Parts>(part, .currAttitudeStr) #string
 			on Parts.Counter
-				simp = SimpleData<of Parts>(part, _pastGreetings.count)
-			#on Parts.ShowMsg
-			#	simp = SimpleData<of Parts>(part, .chooseGreeting.text)
+				simp = SimpleData<of Parts>(part, _pastGreetings.count) #uint
+			on Parts.ShowMsg
+				simp = SimpleData<of Parts>(part, .lastGreeting.text) #string
 			else
 				throw NotImplementedException()
 			
@@ -122,8 +117,8 @@ class GreetController inherits Controller<of Parts>
 				res = Response.okay
 			on "greet"
 				msg = .chooseGreeting
-				.doGreet(msg) # sends simpledata
-				.storeMsg(msg)
+				.storeMsg(msg) # change state
+				.requestPartialReload(Parts.ShowMsg) # sends simpledata based on new state.
 				res = Response.okay
 			on "adjust"
 				if not parsed.arguments.containsKey("attitude")

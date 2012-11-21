@@ -1,7 +1,7 @@
 namespace GreetHello
 
 interface IGreetView
-	def showMsg(msg as String)
+	#def showMsg(msg as String)
 	def requestGreeting
 	def adjustAttitude(n as uint)
 	
